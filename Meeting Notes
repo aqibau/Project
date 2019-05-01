@@ -20,3 +20,5 @@ Server Class(Oscar - Read, Suraj - write)
       - coordinates(double)
       - status(boolean)
       - ID number(int)
+
+*Have to include 2 design patterns
