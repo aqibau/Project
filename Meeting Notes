@@ -1,0 +1,22 @@
+Class Diagram - Tan
+Activity Diagram - Suraj
+Use Case Diagram - Oscar
+Sequence Diagram - Aqib
+
+Item Class
+  - ID number
+  - Status
+  - description
+  - owner
+Cellphone Class
+  - names(owner)
+  - Item list array
+  - coordinates
+  + reportMissing()
+  + reportFound()
+Server Class(Oscar - Read, Suraj - write)
+  - item list
+      - name(String)
+      - coordinates(double)
+      - status(boolean)
+      - ID number(int)
