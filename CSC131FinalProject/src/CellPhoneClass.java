@@ -1,17 +1,17 @@
 import java.io.*;
 
 public class CellPhoneClass {
-	private int cellID;
+	private /*int*/long cellID;
 	private String cellName;
 	private int cellCoordinateX;
 	private int cellCoordinateY;
 	
-	public CellPhoneClass(int id, String name)
+	public CellPhoneClass(/*int*/long id, String name)
 	{
 		cellID = id;
 		cellName = name;
 	}
-	public void registerItem(String itemID, String owner, String status) throws IOException	
+	public static void registerItem(String itemID, String owner, String status) throws IOException	
 	{
 		FileWriter file = new FileWriter("itemRegister.txt");
 		BufferedWriter writer = new BufferedWriter(file);
@@ -21,7 +21,7 @@ public class CellPhoneClass {
 		writer.close();
 		file.close();
 	}
-	public int getID ()
+	public /*int*/long getID ()
 	{
 		return cellID;
 	}
