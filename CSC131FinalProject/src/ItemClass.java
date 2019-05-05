@@ -1,18 +1,38 @@
 public class ItemClass
 {
-	public static int Main()
-	{
-		int CellID;
-		String CellName;
-		int cellCoordinateX;
-		int cellCoordinateY;
+	private int CellID;
+	private String CellName;
+	private int cellCoordinateX;
+	private int cellCoordinateY;
+	
+		public ItemClass(int CellID, String CellName, int cellCoordinateX, int cellCoordinateY)
+			{
 
-		CellID = 1234;
-		CellName = Phone;
-		cellCoordinateX = 0;
-		cellCoordinateY = 0;
+			this.CellID = CellID;
+			this.CellName = CellName;
+			this.cellCoordinateX = cellCoordinateX;
+			this.cellCoordinateY = cellCoordinateY;
 
 
-		return 0;
-	}
+			}
+		public int CellID()
+		{
+			return CellID;
+		}
+
+		public String CellName()
+		{
+			return CellName;
+		}
+		
+		public int cellCoordinateX()
+		{
+			return cellCoordinateX;
+		}
+		
+		public int cellCoordinateY()
+		{
+			return cellCoordinateY;
+		}
 }
+
