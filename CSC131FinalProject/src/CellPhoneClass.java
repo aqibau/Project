@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class CellPhoneClass {
 	private /*int*/long cellID;
@@ -34,5 +35,27 @@ public class CellPhoneClass {
 	{
 		cellCoordinateX = x;
 		cellCoordinateY = y;
+	}
+	public void reportLostItem() throws IOException
+	{
+		FileWriter file = new FileWriter("itemLoss.txt");
+		BufferedWriter writer = new BufferedWriter(file);
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter the lost item ID:");
+		while(input.hasNext())
+		{
+			if (input.hasNextInt())
+			{	
+			writer.write(Integer.toString(input.nextInt()));
+			}
+			else
+			{
+				System.out.print("invalid ID!!!");
+				break;
+			}
+		}
+		input.close();
+		writer.close();
+		file.close();
 	}
 }
