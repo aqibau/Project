@@ -223,7 +223,7 @@ public class ServerClass
 		}
 		catch(FileNotFoundException e)
 		{
-			System.out.println("Error opening file itemList.txt");
+			System.out.println("Error opening file itemList.txt"); // create itemList.txt
 			System.exit(0);
 		}
 		
