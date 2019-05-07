@@ -1,10 +1,11 @@
 public class ItemClass
 {
-	public static final String toString = null;
 	private int CellID;
 	private String CellName;
 	private int cellCoordinateX;
 	private int cellCoordinateY;
+	
+	private String status;
 	
 		public ItemClass(int CellID, String CellName, int cellCoordinateX, int cellCoordinateY)
 			{
@@ -41,5 +42,10 @@ public class ItemClass
 			String info = CellID +"\n"+CellName+" \n" +cellCoordinateX+ "\n"+cellCoordinateY;
 			return info;
 		}
+		
+		public void UpdateStatus(String status)
+		{
+			this.status = status;
+			
+		}
 }
-
