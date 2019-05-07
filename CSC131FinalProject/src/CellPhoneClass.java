@@ -30,7 +30,14 @@ public class CellPhoneClass {
 	{
 		return cellName;
 	}
-	
+	public int getCoordinateX()
+	{
+		return cellCoordinateX;
+	}
+	public int getCoordinateY()
+	{
+		return cellCoordinateY;
+	}
 	public void updateCoordinate(int x, int y)
 	{
 		cellCoordinateX = x;
@@ -42,6 +49,28 @@ public class CellPhoneClass {
 		BufferedWriter writer = new BufferedWriter(file);
 		Scanner input = new Scanner(System.in);
 		System.out.println("Please enter the lost item ID:");
+		while(input.hasNext())
+		{
+			if (input.hasNextInt())
+			{	
+			writer.write(Integer.toString(input.nextInt()));
+			}
+			else
+			{
+				System.out.print("invalid ID!!!");
+				break;
+			}
+		}
+		input.close();
+		writer.close();
+		file.close();
+	}
+	public void reportFoundItem() throws IOException
+	{
+		FileWriter file = new FileWriter("itemFound.txt");
+		BufferedWriter writer = new BufferedWriter(file);
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter the found item ID:");
 		while(input.hasNext())
 		{
 			if (input.hasNextInt())
