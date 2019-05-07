@@ -215,6 +215,21 @@ public class ServerClass
 		}
 		ItemClass item = new ItemClass(itemID, owner, cellCoordinateX, cellCoordinateY);
 		map.put(owner, item);
+		
+		PrintWriter outputStream = null;
+		try
+		{
+			outputStream = new PrintWriter (new FileOutputStream("itemList.txt", true));
+		}
+		catch(FileNotFoundException e)
+		{
+			System.out.println("Error opening file itemList.txt");
+			System.exit(0);
+		}
+		
+		outputStream.print(map);
+
+		
 		/*test*/for(String key : map.keySet())
 		{
 			System.out.print(key + " " + map.get(key));
