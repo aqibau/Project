@@ -12,6 +12,7 @@ public class ServerClass
 		ArrayList<CellPhoneClass> cellList = new ArrayList<CellPhoneClass>();
 		HashMap<String, ItemClass> map = new HashMap<String, ItemClass>();
 		Scanner in = new Scanner(System.in);
+		int answer = 0;
 		boolean repeat = true;
 		boolean nextStep = intro(cellList, in);
 		if(nextStep == true)
@@ -25,22 +26,43 @@ public class ServerClass
 			CellPhoneClass cell = new CellPhoneClass(cellNum, name);
 			cellList.add(cell);
 		}
-		System.out.println("Would you like to register a new item? Y or N?");
-		String answer = in.next();
 		while(repeat)
-		if(answer.equalsIgnoreCase("y"))
 		{
-			readItem(map, in);
-			break;
-		}
-		else if(answer.equalsIgnoreCase("N"))
-		{
-			System.out.println("Good bye");
-			break;
-		}
-		else
-		{
-			System.out.println("Invalid input. Would you like to register a new item? Y or N?");
+			System.out.println("What would you like to do? \n\n1. Register a new item.");
+			System.out.println("2. Report an item lost.");
+			System.out.println("3. Report an item found.");
+			System.out.println("4. Exit");
+			System.out.print("\nEnter the number of what you would like to do: ");
+			if(in.hasNextInt() == true)
+			{
+				answer = in.nextInt();
+			}
+			else
+			{
+				answer = 5;
+				in.nextLine();
+			}
+			if(answer == 1)
+			{
+				readItem(map, in);
+			}
+			else if(answer == 2)
+			{
+				break;
+			}
+			else if(answer == 3)
+			{
+				break;
+			}
+			else if(answer == 4)
+			{
+				System.out.println("Good bye");
+				break;
+			}
+			else
+			{
+				System.out.println("\nInvalid input.\n");
+			}
 		}
 				
 	}
@@ -118,16 +140,24 @@ public class ServerClass
 		int y = rand.nextInt(150-(-150))-150;
 		return y;
 	}
+	//readItem method gets info from the user and calls registerItem from cellPhoneClass
+	
+	//registerItem writes the information to the file --> itemRegister.txt
+	
+	//then readItem reads that information and creates an instance of the ItemClass
+	
+	//the instance of ItemClass is then added to the hashmap where the name of the person
+	//who registered the item is used as the key
 	public static void readItem(HashMap<String, ItemClass> map, Scanner in) throws IOException
 	{
 		String status = "";
 		boolean repeat = true;
-		System.out.println("To register a new item, enter an Item ID: ");
+		System.out.print("To register a new item, enter an Item ID: ");
 		int itemID = in.nextInt();
-		System.out.println("Next, enter the owner's name: ");
+		System.out.print("\nNext, enter the owner's name: ");
 		in.nextLine();
 		String owner = in.nextLine();
-		System.out.println("Is this item lost or found? Type L for lost or F for found.");
+		System.out.print("\nIs this item lost or found? Type L for lost or F for found.");
 		String check = in.next();
 		while(repeat)
 		{
