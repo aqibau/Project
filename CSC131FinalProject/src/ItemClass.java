@@ -1,5 +1,6 @@
 public class ItemClass
 {
+	public static final String toString = null;
 	private int CellID;
 	private String CellName;
 	private int cellCoordinateX;
@@ -20,7 +21,7 @@ public class ItemClass
 			return CellID;
 		}
 
-		public String CellName()
+		public String cellName()
 		{
 			return CellName;
 		}
@@ -33,6 +34,12 @@ public class ItemClass
 		public int cellCoordinateY()
 		{
 			return cellCoordinateY;
+		}
+		
+		public String toString()
+		{
+			String info = CellID +"\n"+CellName+" \n" +cellCoordinateX+ "\n"+cellCoordinateY;
+			return info;
 		}
 }
 
