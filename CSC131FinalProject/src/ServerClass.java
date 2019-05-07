@@ -13,14 +13,18 @@ public class ServerClass
 		HashMap<String, ItemClass> map = new HashMap<String, ItemClass>();
 		Scanner in = new Scanner(System.in);
 		boolean repeat = true;
-		System.out.println("Please register your phone with the app.");
-		System.out.print("Enter your phone number: ");
-		long cellnum = in.nextLong();
-		System.out.println("\nEnter your name: ");
-		in.nextLine();
-		String name = in.nextLine();
-		CellPhoneClass cell = new CellPhoneClass(cellnum, name);
-		cellList.add(cell);
+		boolean nextStep = intro(cellList, in);
+		if(nextStep == true)
+		{
+			System.out.println("Please register your phone with the app.");
+			System.out.print("Enter your phone number: ");
+			long cellNum = in.nextLong();
+			System.out.print("\nEnter your name: ");
+			in.nextLine();
+			String name = in.nextLine();
+			CellPhoneClass cell = new CellPhoneClass(cellNum, name);
+			cellList.add(cell);
+		}
 		System.out.println("Would you like to register a new item? Y or N?");
 		String answer = in.next();
 		while(repeat)
@@ -39,6 +43,67 @@ public class ServerClass
 			System.out.println("Invalid input. Would you like to register a new item? Y or N?");
 		}
 				
+	}
+	//this method gets run first and lets the user login or register if they are new
+	//calls verify method if they claim to not be a new user and checks against ArrayList of cellphones
+	//if they are a new user, then they can register their phone and it will be added to the cellList
+	public static boolean intro(ArrayList<CellPhoneClass> cellList, Scanner in)
+	{
+		boolean register = false;
+		boolean user = false;
+		while(user == false)
+		{
+			System.out.println("Are you a new user?");
+			String response = in.next();
+			if(response.equalsIgnoreCase("Y"))
+			{
+				register = true;
+				user = true;
+			}
+			else if(response.equalsIgnoreCase("N"))
+			{
+				System.out.print("Enter your phone number: ");
+				in.nextLine();
+				long cellNum = in.nextLong();
+				System.out.print("\nEnter your name: ");
+				in.nextLine();
+				String name = in.nextLine();
+				user = verify(cellList, cellNum, name);
+				if(user == false)
+				{
+					System.out.println("User not found.");
+				}
+				register = false;
+			}
+			else
+			{
+				System.out.println("Invalid input.");
+				register = false;
+			}
+		}
+		return register;
+	}
+	//verify method checks the name and number entered by the user against the celllist
+	//it returns true if they have registered before or false if they have not
+	//if false then it will output an error and take them through the process again
+	public static boolean verify(ArrayList<CellPhoneClass> cellList, long cellNum, String name)
+	{
+		boolean user = false;
+		while(user == false && cellList.size() != 0)
+		{
+			for(int i = 0; i < cellList.size(); i++)
+			{
+				if(name.equals(cellList.get(i).getName()))
+				{
+					if(cellNum == cellList.get(i).getID())
+					{
+						user = true;
+						break;
+					}
+				}
+			}
+		}
+		return user;
 	}
 	//I made these methods to generate some random x and y coordinates between -150 and 150
 	public static int randomX()
@@ -94,14 +159,17 @@ public class ServerClass
 				if(i == 0)
 				{
 					itemID = Integer.parseInt(line);
+					/*test*/System.out.println(itemID);
 				}
 				else if(i == 1)
 				{
 					owner = line;
+					/*test*/System.out.println(owner);
 				}
 				else if(i == 2)
 				{
 					status = line;
+					/*test*/System.out.println(status);
 				}
 				i++;
 			}
@@ -117,6 +185,11 @@ public class ServerClass
 		}
 		ItemClass item = new ItemClass(itemID, owner, cellCoordinateX, cellCoordinateY);
 		map.put(owner, item);
+		/*test*/for(String key : map.keySet())
+		{
+			System.out.print(key + " " + map.get(key));
+		}
+			
 		
 		
 		
