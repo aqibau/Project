@@ -2,15 +2,15 @@ public class ItemClass
 {
 	public static final String toString = null;
 	private int CellID;
-	private String cellName;
+	private String CellName;
 	private int cellCoordinateX;
 	private int cellCoordinateY;
 	
-		public ItemClass(int CellID, String cellName, int cellCoordinateX, int cellCoordinateY)
+		public ItemClass(int CellID, String CellName, int cellCoordinateX, int cellCoordinateY)
 			{
 
 			this.CellID = CellID;
-			this.cellName = cellName;
+			this.CellName = CellName;
 			this.cellCoordinateX = cellCoordinateX;
 			this.cellCoordinateY = cellCoordinateY;
 
@@ -23,7 +23,7 @@ public class ItemClass
 
 		public String cellName()
 		{
-			return cellName;
+			return CellName;
 		}
 		
 		public int cellCoordinateX()
@@ -35,13 +35,11 @@ public class ItemClass
 		{
 			return cellCoordinateY;
 		}
-		public static char[] toString(String cellName2) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		public static char[] toString(int itemID) {
-			// TODO Auto-generated method stub
-			return null;
+		
+		public String toString()
+		{
+			String info = CellID +"\n"+CellName+" \n" +cellCoordinateX+ "\n"+cellCoordinateY;
+			return info;
 		}
 }
 
