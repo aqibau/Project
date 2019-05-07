@@ -39,7 +39,7 @@ public class ItemClass
 		
 		public String toString()
 		{
-			String info = CellID +"\n"+CellName+" \n" +cellCoordinateX+ "\n"+cellCoordinateY;
+			String info = CellID +"\n"+CellName+" \n" +cellCoordinateX+ "\n"+cellCoordinateY+ "\n"+ status;
 			return info;
 		}
 		
