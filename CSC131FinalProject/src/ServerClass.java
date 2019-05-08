@@ -211,6 +211,7 @@ public class ServerClass
 		
 		outputStream.print(map.get(owner.toString()));
 		outputStream.println();
+		outputStream.println();
 		
 		
 		outputStream.close();
