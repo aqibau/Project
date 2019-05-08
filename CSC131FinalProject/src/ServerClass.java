@@ -227,8 +227,12 @@ public class ServerClass
 			System.exit(0);
 		}
 		
-		outputStream.print(map);
-
+		outputStream.print(map.get(owner.toString()));
+		outputStream.println();
+		
+		
+		outputStream.close();
+		
 		
 		/*test*/for(String key : map.keySet())
 		{
