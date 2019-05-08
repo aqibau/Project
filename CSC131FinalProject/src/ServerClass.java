@@ -75,7 +75,7 @@ public class ServerClass
 		boolean user = false;
 		while(user == false)
 		{
-			System.out.println("Are you a new user?");
+			System.out.println("Are you a new user? Enter Y or N.");
 			String response = in.next();
 			if(response.equalsIgnoreCase("Y"))
 			{
@@ -157,27 +157,9 @@ public class ServerClass
 		System.out.print("\nNext, enter the owner's name: ");
 		in.nextLine();
 		String owner = in.nextLine();
-		System.out.print("\nIs this item lost or found? Type L for lost or F for found.");
-		String check = in.next();
-		while(repeat)
-		{
-			if(check.equalsIgnoreCase("L"))
-			{
-				status = "lost";
-				break;
-			}
-			else if(check.equalsIgnoreCase("F"))
-			{
-				status = "found";
-				break;
-			}
-			else
-			{
-				System.out.println("That input is invalid. Type L for lost or F for found.");
-			}
-		}
 		int cellCoordinateX = randomX();
 		int cellCoordinateY = randomY();
+		status = "found";
 		CellPhoneClass.registerItem(Integer.toString(itemID), owner, status);
 		try
 		{
