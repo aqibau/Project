@@ -40,7 +40,7 @@ public class ServerClass
 			else
 			{
 				answer = 5;
-				in.nextLine();
+				//in.nextLine();
 			}
 			if(answer == 1)
 			{
@@ -48,11 +48,41 @@ public class ServerClass
 			}
 			else if(answer == 2)
 			{
+				String lost = "lost";
+				reportLost(lost, map);
+				for(String key : map.keySet())
+				{
+					System.out.print(key + " " + map.get(key));
+				}
 				break;
 			}
 			else if(answer == 3)
 			{
-				break;
+				String found = "found";
+				boolean valid = false;
+				int x = 0;
+				int y = 0;
+				
+				System.out.println("Enter new coordinates for the item: ");
+				while(valid == false)
+				{	
+					if(in.hasNextInt() == true)
+					{
+						x = in.nextInt();
+						valid = true;
+						if(in.hasNextInt() == true)
+						{
+							y = in.nextInt();
+							valid = true;
+						}
+					}
+					else
+					{
+						System.out.println("Invalid input.");
+					}
+				}
+				reportFound(found, x, y, map);
+				System.out.println("Thank you! Owner notified of new location");
 			}
 			else if(answer == 4)
 			{
@@ -62,6 +92,7 @@ public class ServerClass
 			else
 			{
 				System.out.println("\nInvalid input.\n");
+				in.reset();
 			}
 		}
 				
@@ -214,32 +245,65 @@ public class ServerClass
 		outputStream.println();
 		outputStream.println();
 		
-		public String reportLost(String lost)
+		outputStream.close();
+	}		
+		public static void reportLost(String lost, HashMap<String, ItemClass> map) throws IOException
 		{
 			CellPhoneClass.reportLostItem();
-			for (String key: map.keySet())
+			try
 			{
-				if (map.get(key).CellID() == itemID)
-					map.get(key).UpdateStatus(lost);
-			}
+				BufferedReader inputStream = new BufferedReader(new FileReader("itemLoss.txt"));
+				String itemID = inputStream.readLine();
+				for (String key: map.keySet())
+				{	
+					if (map.get(key).CellID() == Integer.parseInt(itemID))
+					{
+						map.get(key).UpdateStatus(lost);
+					}
+				}
+				inputStream.close();
 		
+			}
+			catch(FileNotFoundException e)
+			{
+				System.out.println("The file you're attempting to read from does not exist.");
+			}
+			catch(IOException e)
+			{
+				System.out.println("Error reading from the file");
+			}
 		}
 		
-		public String reportFound(String found, int x, int y)
+		public static void reportFound(String found, int x, int y, HashMap<String, ItemClass> map) throws IOException
 		{
 			CellPhoneClass.reportFoundItem();
-			for (String key: map.keySet())
+			found = "found";
+			try
 			{
-				if (map.get(key).CellID() == itemID)
-					map.get(key).UpdateStatus(found);
+				BufferedReader inputStream = new BufferedReader(new FileReader("itemFound.txt"));
+				String itemID = inputStream.readLine();
+				for (String key: map.keySet())
+				{	
+					if (map.get(key).CellID() == Integer.parseInt(itemID))
+					{
+						map.get(key).UpdateStatus(found);
+					}
+				}
+				inputStream.close();
+		
 			}
-			String change = key;
-			map.get(key).UpdateStatus(found);
+			catch(FileNotFoundException e)
+			{
+				System.out.println("The file you're attempting to read from does not exist.");
+			}
+			catch(IOException e)
+			{
+				System.out.println("Error reading from the file");
+			}
 		
 		}
 		
 		
-		outputStream.close();
 		
 		
 		/*test for(String key : map.keySet())
@@ -251,4 +315,4 @@ public class ServerClass
 		
 		
 	}
-}
+

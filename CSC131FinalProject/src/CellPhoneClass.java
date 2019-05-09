@@ -43,17 +43,21 @@ public class CellPhoneClass {
 		cellCoordinateX = x;
 		cellCoordinateY = y;
 	}
-	public void reportLostItem() throws IOException
+	public static void reportLostItem() throws IOException
 	{
 		FileWriter file = new FileWriter("itemLoss.txt");
 		BufferedWriter writer = new BufferedWriter(file);
 		Scanner input = new Scanner(System.in);
 		System.out.println("Please enter the lost item ID:");
-		while(input.hasNext())
+		int i = 0;
+		while(input.hasNextInt() && i < 1)
 		{
 			if (input.hasNextInt())
 			{	
-			writer.write(Integer.toString(input.nextInt()));
+				writer.write(Integer.toString(input.nextInt()));
+				i++;
+				//input.nextLine();
+				break;
 			}
 			else
 			{
@@ -65,7 +69,7 @@ public class CellPhoneClass {
 		writer.close();
 		file.close();
 	}
-	public void reportFoundItem() throws IOException
+	public static void reportFoundItem() throws IOException
 	{
 		FileWriter file = new FileWriter("itemFound.txt");
 		BufferedWriter writer = new BufferedWriter(file);
@@ -75,7 +79,8 @@ public class CellPhoneClass {
 		{
 			if (input.hasNextInt())
 			{	
-			writer.write(Integer.toString(input.nextInt()));
+				writer.write(Integer.toString(input.nextInt()));
+				break;
 			}
 			else
 			{
