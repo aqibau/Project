@@ -195,7 +195,7 @@ public class ServerClass
 		{
 			System.out.println("Error reading from the file");
 		}
-		ItemClass item = new ItemClass(itemID, owner, cellCoordinateX, cellCoordinateY);
+		ItemClass item = new ItemClass(itemID, owner, cellCoordinateX, cellCoordinateY,status);
 		map.put(owner, item);
 		
 		PrintWriter outputStream = null;
