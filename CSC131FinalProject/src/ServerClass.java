@@ -213,6 +213,35 @@ public class ServerClass
 		outputStream.println();
 		outputStream.println();
 		
+		public String reportLost(String lost)
+		{
+			CellPhoneClass.reportLostItem();
+			for (String key: map.keySet())
+			{
+				if (map.get(key).CellID() == itemID)
+					map.get(key).UpdateStatus(lost);
+			}
+		
+		}
+		
+		public String reportFound(String found, int x, int y)
+		{
+			CellPhoneClass.reportFoundItem();
+			for (String key: map.keySet())
+			{
+				if (map.get(key).CellID() == itemID)
+					map.get(key).UpdateStatus(found);
+			}
+			String change = key;
+			map.get(key).UpdateStatus(found);
+		
+			System.out.println("Enter new coordinates: ");
+			// scan inputs x and y
+			CellPhoneClass.updateCoordinate(x, y);
+			System.out.println("Owner notified of coordinates");
+		}
+		
+		
 		
 		outputStream.close();
 		
