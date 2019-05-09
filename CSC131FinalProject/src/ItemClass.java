@@ -1,20 +1,20 @@
+
 public class ItemClass
 {
 	private int CellID;
 	private String CellName;
 	private int cellCoordinateX;
 	private int cellCoordinateY;
-	
 	private String status;
 	
-		public ItemClass(int CellID, String CellName, int cellCoordinateX, int cellCoordinateY)
+		public ItemClass(int CellID, String CellName, int cellCoordinateX, int cellCoordinateY, String status)
 			{
 
 			this.CellID = CellID;
 			this.CellName = CellName;
 			this.cellCoordinateX = cellCoordinateX;
 			this.cellCoordinateY = cellCoordinateY;
-
+		
 
 			}
 		public int CellID()
@@ -47,5 +47,15 @@ public class ItemClass
 		{
 			this.status = status;
 			
+		}
+		
+		public void UpdateX(int cellCoordinateX)
+		{
+			this.cellCoordinateX = cellCoordinateX;
+		}
+		
+		public void UpdateY(int cellCoordinateY)
+		{
+			this.cellCoordinateY = cellCoordinateY;
 		}
 }
