@@ -111,13 +111,14 @@ public class ServerClass
 	public static boolean verify(ArrayList<CellPhoneClass> cellList, long cellNum, String name)
 	{
 		boolean user = false;
-		while(user == false && cellList.size() != 0)
+		Iterator<CellPhoneClass>cellIterator = cellList.iterator();
+		while(user == false)
 		{
-			for(int i = 0; i < cellList.size(); i++)
+			while(cellIterator.hasNext())
 			{
-				if(name.equals(cellList.get(i).getName()))
+				if(name.equals(cellIterator.next().getName()))
 				{
-					if(cellNum == cellList.get(i).getID())
+					if(cellNum == cellIterator.next().getID())
 					{
 						user = true;
 						break;

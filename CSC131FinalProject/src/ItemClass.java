@@ -14,7 +14,7 @@ public class ItemClass
 			this.CellName = CellName;
 			this.cellCoordinateX = cellCoordinateX;
 			this.cellCoordinateY = cellCoordinateY;
-		
+			this.status = status;
 
 			}
 		public int CellID()
