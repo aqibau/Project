@@ -111,13 +111,14 @@ public class ServerClass
 	public static boolean verify(ArrayList<CellPhoneClass> cellList, long cellNum, String name)
 	{
 		boolean user = false;
-		while(user == false && cellList.size() != 0)
+		Iterator<CellPhoneClass>cellIterator = cellList.iterator();
+		while(user == false)
 		{
-			for(int i = 0; i < cellList.size(); i++)
+			while(cellIterator.hasNext())
 			{
-				if(name.equals(cellList.get(i).getName()))
+				if(name.equals(cellIterator.next().getName()))
 				{
-					if(cellNum == cellList.get(i).getID())
+					if(cellNum == cellIterator.next().getID())
 					{
 						user = true;
 						break;
@@ -171,17 +172,17 @@ public class ServerClass
 				if(i == 0)
 				{
 					itemID = Integer.parseInt(line);
-					/*test*/System.out.println(itemID);
+					///*test*/System.out.println(itemID);
 				}
 				else if(i == 1)
 				{
 					owner = line;
-					/*test*/System.out.println(owner);
+					///*test*/System.out.println(owner);
 				}
 				else if(i == 2)
 				{
 					status = line;
-					/*test*/System.out.println(status);
+					///*test*/System.out.println(status);
 				}
 				i++;
 			}
@@ -195,7 +196,7 @@ public class ServerClass
 		{
 			System.out.println("Error reading from the file");
 		}
-		ItemClass item = new ItemClass(itemID, owner, cellCoordinateX, cellCoordinateY,status);
+		ItemClass item = new ItemClass(itemID, owner, cellCoordinateX, cellCoordinateY, status);
 		map.put(owner, item);
 		
 		PrintWriter outputStream = null;
@@ -243,10 +244,10 @@ public class ServerClass
 		outputStream.close();
 		
 		
-		/*test*/for(String key : map.keySet())
+		/*test for(String key : map.keySet())
 		{
 			System.out.print(key + " " + map.get(key));
-		}
+		}*/
 			
 		
 		
