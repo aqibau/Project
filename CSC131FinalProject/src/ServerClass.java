@@ -235,10 +235,7 @@ public class ServerClass
 			String change = key;
 			map.get(key).UpdateStatus(found);
 		
-			System.out.println("Enter new coordinates: ");
-			// scan inputs x and y
-			CellPhoneClass.updateCoordinate(x, y);
-			System.out.println("Owner notified of coordinates");
+			
 		}
 		
 		
