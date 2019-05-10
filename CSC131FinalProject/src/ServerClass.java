@@ -83,6 +83,7 @@ public class ServerClass
 				}
 				reportFound(found, x, y, map);
 				System.out.println("Thank you! Owner notified of new location");
+				break;
 			}
 			else if(answer == 4)
 			{
@@ -93,6 +94,7 @@ public class ServerClass
 			{
 				System.out.println("\nInvalid input.\n");
 				in.reset();
+				break;
 			}
 		}
 				
